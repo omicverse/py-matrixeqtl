@@ -1,0 +1,60 @@
+[build-system]
+requires = ["setuptools>=64", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pymatrixeqtl"
+version = "0.1.0"
+description = "Pure-Python port of CRAN MatrixEQTL -- ultra-fast eQTL mapping (linear / ANOVA / interaction models, cis/trans split, Benjamini-Hochberg FDR)."
+readme = "README.md"
+requires-python = ">=3.9"
+license = { file = "LICENSE" }
+authors = [
+    { name = "Zehua Zeng", email = "starlitnightly@163.com" },
+]
+keywords = [
+    "eQTL", "MatrixEQTL", "QTL-mapping", "genotype", "gene-expression",
+    "association-testing", "cis-eQTL", "trans-eQTL", "GWAS",
+    "linear-regression", "ANOVA", "FDR", "bioinformatics", "genomics",
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: GNU Lesser General Public License v3 (LGPLv3)",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Topic :: Scientific/Engineering :: Bio-Informatics",
+]
+
+dependencies = [
+    "numpy>=1.23",
+    "scipy>=1.10",
+    "pandas>=1.5",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=7", "pytest-cov", "ruff"]
+plot = ["matplotlib>=3.6"]
+
+[project.urls]
+Homepage = "https://github.com/omicverse/py-matrixeqtl"
+Repository = "https://github.com/omicverse/py-matrixeqtl"
+Issues = "https://github.com/omicverse/py-matrixeqtl/issues"
+"Upstream CRAN package" = "https://cran.r-project.org/package=MatrixEQTL"
+"Upstream (omicverse)" = "https://github.com/Starlitnightly/omicverse"
+
+[tool.setuptools.packages.find]
+include = ["pymatrixeqtl*"]
+exclude = ["tests*", "examples*"]
+
+[tool.setuptools.package-data]
+pymatrixeqtl = ["data/*.txt"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+filterwarnings = [
+    "ignore::DeprecationWarning",
+    "ignore::FutureWarning",
+    "ignore::RuntimeWarning",
+]
